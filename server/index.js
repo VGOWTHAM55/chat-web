@@ -12,9 +12,13 @@ const server = http.createServer(app);
 app.use(cors({ origin: "http://localhost:5173" }));
 app.use(express.json());
 
-mongoose.connect("mongodb://localhost:27017/chatdb", {
+// index.js
+
+require("dotenv").config(); // This loads variables from .env file (only in local dev)
+
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
+  useUnifiedTopology: true
 })
 .then(() => console.log("MongoDB connected"))
 .catch(err => console.error("MongoDB connection error:", err));
