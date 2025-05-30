@@ -4,7 +4,7 @@ import io from "socket.io-client";
 import axios from "axios";
 import "./index.css"; // Ensure Tailwind CSS is imported
 
-const socket = io("https://chat-backend-orff.onrender.com");
+const socket = io("https://chat-backend-p8iw.onrender.com");
 
 function App() {
   const [messages, setMessages] = useState([]);
@@ -32,7 +32,7 @@ function App() {
     const message = { username: username.trim(), text: input.trim() };
     socket.emit("message", message);
     try {
-      await axios.post("https://chat-backend-orff.onrender.com/api/messages", message);
+      await axios.post("https://chat-backend-p8iw.onrender.com/api/messages", message);
     } catch (error) {
       console.error("Failed to send message to server:", error);
     }
@@ -42,7 +42,7 @@ function App() {
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const res = await axios.get("https://chat-backend-orff.onrender.com/api/messages");
+        const res = await axios.get("https://chat-backend-p8iw.onrender.com/api/messages");
         setMessages(res.data);
       } catch (error) {
         console.error("Failed to fetch messages:", error);
