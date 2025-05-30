@@ -9,7 +9,7 @@ const Message = require("./Message");
 const app = express();
 const server = http.createServer(app);
 
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({ origin: "https://chat-frontend-q34x.onrender.com" }));
 app.use(express.json());
 
 // index.js
@@ -25,7 +25,7 @@ mongoose.connect(process.env.MONGO_URI, {
 
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: "https://chat-frontend-q34x.onrender.com",
     methods: ["GET", "POST"]
   }
 });
